@@ -1,0 +1,39 @@
+{
+  "name": "release",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "hongbusi": "bin/hongbusi.js"
+  },
+  "eslintConfig": {
+    "extends": "@hongbusi/eslint-config-ts"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hongbusi/release.git"
+  },
+  "keywords": [
+    "hongbusi",
+    "release",
+    "cli"
+  ],
+  "author": "Hongbusi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hongbusi/release/issues"
+  },
+  "homepage": "https://github.com/Hongbusi/release#readme",
+  "devDependencies": {
+    "@hongbusi/eslint-config-ts": "^0.2.1",
+    "eslint": "^8.13.0",
+    "typescript": "^4.6.3"
+  }
+}
