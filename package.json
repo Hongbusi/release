@@ -1,6 +1,6 @@
 {
-  "name": "release",
-  "version": "0.0.2",
+  "name": "@hongbusi/release",
+  "version": "0.0.0",
   "description": "",
   "bin": {
     "hongbusi": "bin/hongbusi.js"
