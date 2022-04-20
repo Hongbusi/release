@@ -1,5 +1,7 @@
-import { log } from './log'
+import minimist from 'minimist'
+import chalk from 'chalk'
 
-log.red('Hello')
-log.cyan('Hello')
-log.green('Hello')
+const args = minimist(process.argv.slice(2))
+
+console.log(args)
+console.log(chalk.blue('Hello world!'))
