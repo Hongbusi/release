@@ -108,11 +108,11 @@ async function main() {
   await run('git', ['push', 'origin', `refs/tags/v${targetVersion}`])
   await run('git', ['push'])
 
-  console.log(chalk.green('finished.'))
+  console.log(chalk.green('Finished.'))
 }
 
 function updateVersions(version) {
-  const pkgPath = path.resolve(path.resolve(process.cwd(), '.'), 'package.json')
+  const pkgPath = path.resolve(path.resolve(process.cwd()), 'package.json')
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
   pkg.version = version
   fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`)
