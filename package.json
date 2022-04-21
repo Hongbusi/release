@@ -1,7 +1,8 @@
 {
   "name": "@hongbusi/release",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
+  "description": "A command-line tool to quickly create releases.",
+  "main": "src/index.js",
   "bin": {
     "release": "bin/release.js"
   },
