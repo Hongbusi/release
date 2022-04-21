@@ -24,7 +24,7 @@ pnpm add @hongbusi/release -D
 }
 ```
 
-### 如果需要发布到 `npm`，需要添加参数 `--publish`
+如果需要发布到 `npm`，需要添加参数 `--publish`
 
 ``` json
 {
@@ -33,6 +33,35 @@ pnpm add @hongbusi/release -D
   }
 }
 ```
+
+### 添加 git action 
+
+``` yml
+on:
+  push:
+    tags:
+      - 'v*'
+
+name: Create Release
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create Release for Tag
+        id: create_release
+        uses: Hongbusi/create-release@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+
+```
+
+到这里就配置完成了，开始享受吧。
 
 ## License
 
