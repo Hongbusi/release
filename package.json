@@ -1,9 +1,9 @@
 {
   "name": "@hongbusi/release",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "bin": {
-    "hongbusi": "bin/hongbusi.js"
+    "release": "bin/release.js"
   },
   "files": [
     "bin",
