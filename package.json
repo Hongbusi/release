@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc",
-    "watch": "pnpm run build -- --watch"
+    "watch": "pnpm run build -- --watch",
+    "release": "node bin/release.js"
   },
   "repository": {
     "type": "git",
