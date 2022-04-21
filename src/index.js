@@ -5,7 +5,9 @@ const chalk = require('chalk')
 const semver = require('semver')
 const { prompt } = require('enquirer')
 const execa = require('execa')
-const pkg = require('../package.json')
+
+const pkgPath = path.resolve(path.resolve(process.cwd()), 'package.json')
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
 
 const currentVersion = pkg.version
 const scripts = pkg.scripts || {}
@@ -87,7 +89,7 @@ async function main() {
   if (stdout) {
     step('\nCommitting changes...')
     await run('git', ['add', '-A'])
-    await run('git', ['commit', '-m', `release: v${targetVersion}`])
+    await run('git', ['commit', '-m', `chore(release): v${targetVersion}`])
   }
   else {
     console.log('No changes to commit.')
