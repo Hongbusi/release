@@ -24,7 +24,7 @@ pnpm add @hongbusi/release -D
 }
 ```
 
-If you need to publish to `npm`, you need to add the parameter `--publish`.
+### If you need to publish to `npm`, you need to add the parameter `--publish`
 
 ``` json
 {
