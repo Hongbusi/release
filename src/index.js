@@ -1,13 +1,12 @@
-const fs = require('fs')
-const path = require('path')
 const args = require('minimist')(process.argv.slice(2))
 const chalk = require('chalk')
 const semver = require('semver')
 const { prompt } = require('enquirer')
 const execa = require('execa')
 
-const pkgPath = path.resolve(path.resolve(process.cwd()), 'package.json')
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+const { getPackageJson, setPackageJson } = require('./fs')
+
+const pkg = getPackageJson()
 
 const currentVersion = pkg.version
 const scripts = pkg.scripts || {}
@@ -30,7 +29,6 @@ async function main() {
   let targetVersion = args._[0]
 
   if (!targetVersion) {
-    // no explicit version, offer suggestions
     const { release } = await prompt({
       type: 'select',
       name: 'release',
@@ -70,7 +68,8 @@ async function main() {
   const keys = Object.keys(scripts)
 
   step('\nUpdating package version...')
-  updateVersions(targetVersion)
+  pkg.version = targetVersion
+  setPackageJson(pkg)
 
   // generate changelog
   step('\nGenerating changelog...')
@@ -111,13 +110,6 @@ async function main() {
   await run('git', ['push'])
 
   console.log(chalk.green('Finished.'))
-}
-
-function updateVersions(version) {
-  const pkgPath = path.resolve(path.resolve(process.cwd()), 'package.json')
-  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
-  pkg.version = version
-  fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`)
 }
 
 async function publishPackage(version) {
