@@ -1,6 +1,6 @@
 {
   "name": "@hongbusi/release",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A command-line tool to quickly create releases.",
   "main": "src/index.js",
   "bin": {
@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "watch": "pnpm run build -- --watch",
-    "release": "node bin/release.js"
+    "release": "node bin/release.js --publish"
   },
   "repository": {
     "type": "git",
